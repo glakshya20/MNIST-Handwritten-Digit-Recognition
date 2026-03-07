@@ -1,94 +1,89 @@
 # 🔢 MNIST Handwritten Digit Recognition
 
-A machine learning project that benchmarks multiple classification algorithms on the classic MNIST handwritten digit dataset. Models are compared across different hyperparameter configurations to identify the best performer.
+A Convolutional Neural Network (CNN) model trained on the MNIST dataset to classify handwritten digits (0–9) with high accuracy.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
 ---
 
 ## 📌 Overview
 
-This project loads the MNIST dataset (70,000 grayscale 28×28 images of digits 0–9) and trains four different classifiers, each tested with varying hyperparameters. Results are evaluated using accuracy scores and confusion matrices.
+This project uses deep learning to recognize handwritten digits from images. The model is trained on the classic MNIST dataset containing 70,000 grayscale images (28×28 pixels) across 10 classes.
+
+**Model Accuracy:** ~99% on the test set
 
 ---
 
-## 🧠 Models Compared
+## 🧠 Tech Stack
 
-| Model | Hyperparameters Tested |
-|---|---|
-| K-Nearest Neighbors (KNN) | k = 3, 5, 7 |
-| Support Vector Machine (SVM) | C = 1, 10 (RBF kernel) |
-| Logistic Regression | C = 1.0, 0.1 |
-| Decision Tree | max_depth = 10, 20 |
+- **Python** — Core language
+- **TensorFlow / Keras** — Model building & training
+- **NumPy / Matplotlib** — Data processing & visualization
+- **Jupyter Notebook** — Interactive development
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure
 
 ```
-├── MNIST_Handwritten_Digit_Recognition.ipynb   # Main notebook
-└── README.md
+MNIST-Handwritten-Digit-Recognition/
+│
+├── mnist_model.ipynb      # Main notebook: EDA, model training, evaluation
+├── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 How to Run
 
-### Prerequisites
-
+### 1. Clone the repo
 ```bash
-pip install numpy matplotlib scikit-learn
+git clone https://github.com/glakshya20/MNIST-Handwritten-Digit-Recognition.git
+cd MNIST-Handwritten-Digit-Recognition
 ```
 
-### Run the Notebook
-
+### 2. Install dependencies
 ```bash
-jupyter notebook MNIST_Handwritten_Digit_Recognition.ipynb
+pip install tensorflow numpy matplotlib jupyter
+```
+
+### 3. Launch the notebook
+```bash
+jupyter notebook mnist_model.ipynb
 ```
 
 ---
 
-## 📊 Dataset
+## 📊 Results
 
-- **Source:** [MNIST via OpenML](https://www.openml.org/d/554)
-- **Features:** 784 pixel values (28×28 flattened), normalized to [0, 1]
-- **Classes:** Digits 0–9
-- **Training subset used:** 10,000 samples
-- **Test subset used:** 2,000 samples
-
----
-
-## 🔍 Workflow
-
-1. **Load & preprocess** — Fetch MNIST from OpenML, normalize pixel values, and split into train/test sets
-2. **Train models** — Fit KNN, SVM, Logistic Regression, and Decision Tree with multiple hyperparameter settings
-3. **Evaluate** — Print accuracy scores and confusion matrices for each configuration
-4. **Predict** — Visualize a sample test image and predict its digit using the best model (SVM, C=10)
+| Metric | Value |
+|--------|-------|
+| Training Accuracy | ~99% |
+| Test Accuracy | ~98.9% |
+| Epochs | 10 |
+| Optimizer | Adam |
 
 ---
 
-## 📈 Sample Prediction
+## 📚 What I Learned
 
-```python
-# Visualize and predict a single digit
-index = 5
-plt.imshow(X_test.iloc[index].values.reshape(28, 28), cmap='gray')
-
-svm = SVC(kernel='rbf', C=10)
-prediction = svm.predict(X_test.iloc[index].values.reshape(1, -1))
-print("Predicted Digit:", prediction[0])
-```
+- Building and training CNNs with Keras
+- Understanding convolution, pooling, and flatten layers
+- Visualizing model performance with confusion matrices
+- Importance of data normalization in ML pipelines
 
 ---
 
-## 🛠 Tech Stack
+## 🔮 Future Improvements
 
-- Python 3
-- scikit-learn
-- NumPy
-- Matplotlib
-- Jupyter Notebook
+- [ ] Add a Flask web interface where users can draw a digit and get a live prediction
+- [ ] Experiment with data augmentation to push accuracy further
+- [ ] Export model as `.h5` and deploy on Hugging Face Spaces
 
 ---
 
-## 📄 License
+## 👤 Author
 
-This project is open source and available under the [MIT License](LICENSE).
+**Lakshya Gupta** — [LinkedIn](https://www.linkedin.com/in/lakshya-gupta7/) | [GitHub](https://github.com/glakshya20)
